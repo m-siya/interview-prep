@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include<iostream>
+#include <iostream>
 #include <bitset>
 #include <algorithm>
 
