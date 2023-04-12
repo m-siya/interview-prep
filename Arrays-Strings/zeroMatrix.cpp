@@ -49,6 +49,8 @@ public:
     }
 
     //optimized approach, use the first row and col of matrix as the hashmaps
+    // O(N * M) time complexity and O(1) space complexity
+    
     /* first iterate through the first row and first col and set 2 flags as true if there are zeros in
         each. 
         then, iterate through rest of the elements and set the hashmaps 0 if the corresponding element is zero.
