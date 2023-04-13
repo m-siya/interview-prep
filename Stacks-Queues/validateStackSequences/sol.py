@@ -6,7 +6,7 @@
 
 # my approach: simulate the pushing and popping sequences, if at the end, stack is empty then valid else invalid
 # time complexity : O(N)
-# space complexity : O(1)
+# space complexity : O(N) since we used a stack
 
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
