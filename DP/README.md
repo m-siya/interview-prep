@@ -17,3 +17,29 @@
 4. At its core, DP problems are really graph problems. Here each dp[...][...][...] terms are nodes and edges are drawn based on recurrence relations. For your problem to have a DP solution, this graph MUST BE a DAG. This is usually what textbooks mean "optimal substructure". For me, this connection of DP to its graph representation greatly helped.
 
 
+### start to (i, j) vs (i, j) to destination
+    Assuming the problem is a minimum path sum in a matrix.
+    1. f(i, j) -> minimum path sum from start to (i, j)
+    Intuitively, fits the recursive top down approach. (think, induction - so to get the value of f(dest), find value of f(dest - one step) + some logic)
+
+    Also intuitive for fixed start but different destination problems.
+
+    2. f(i, j) -> minimum path sum from (i, j) to dest
+
+
+-------------------------------------------------
+1. Note - dimensions of dp are the mapping in the helper function, start with finding the mapping of the helper function as the first step
+
+
+---------------------
+### Meet in the Middle
+
+a technique where search space is divided into two parts of equal size. A separate search is performed for both parts and results are combined. 
+
+use if efficient way to combine results of the 2 searches, then time taken < time for 1 large search -> 2^n -> 2^(n/2).  (2^n because at each step, we choose to take or leave an element). (2^n/2 equals root(2^n))
+
+
+
+Q. given an array of n numbers, how many ways to choose a subset of the numbers of sum x?
+
+
