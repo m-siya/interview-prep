@@ -69,4 +69,80 @@ class Solution:
 
 
 ### Partition Array Into Two Arrays to Minimize Sum Difference
-l
+
+#### Pre-requisite - Closest Subsequence Sum
+# You are given an integer array nums and an integer goal.
+
+# You want to choose a subsequence of nums such that the sum of its elements is the closest 
+# possible to goal. That is, if the sum of the subsequence's elements is sum, then you want to minimize the 
+# absolute difference abs(sum - goal).
+
+# Return the minimum possible value of abs(sum - goal).
+
+# Note that a subsequence of an array is an array formed by removing some elements (possibly all or none) of 
+# the original array.
+
+# https://leetcode.com/problems/closest-subsequence-sum/description/
+from bisect import bisect_left
+
+class Solution(object):
+    def minAbsDifference(self, nums, goal):
+        """
+        :type nums: List[int]
+        :type goal: int
+        :rtype: int
+        """
+
+        #generate all possible sums of subsequences
+        # def dfs(i, curr, arr, sums):
+        #     if i == len(arr):
+        #         sums.add(curr)
+        #         return 
+        #     dfs(i + 1, curr, arr, sums)
+        #     dfs(i + 1, curr + arr[i], arr, sums)
+
+        
+        # sums1, sums2 = set(), set()
+
+        # #generate all possible sums for first half and second half
+        # dfs(0, 0, nums[:len(nums) // 2], sums1)
+        # dfs(0, 0, nums[len(nums)//2:], sums2)
+
+        # takes too long, approx 3000 ms in lc
+
+        #try
+        def sums(arr):
+            sums = {0}
+            for element in arr:
+                sums |= {subseq_sum + element for subseq_sum in sums}
+            return sums
+        
+        # this is about 1000 ms in lc
+        # sums1 = sums(nums[:len(nums) // 2])
+        # sums2 = sorted(sums(nums[len(nums) // 2:]))
+
+
+        # about 400 ms in lc, beats 100%
+        sums1 = sums(nums[1::2])
+        sums2 = sorted(sums(nums[::2]))
+
+        #sort the possible sums of 2nd half
+        sums2 = sorted(sums2)
+        min_difference = 10 ** 10
+        for s in sums1:
+            remaining = goal - s
+            #find this remaining value in sums2
+            i = bisect_left(sums2, remaining)
+            if i < len(sums2):
+                min_difference = min(min_difference, abs(remaining - sums2[i]))
+            if i > 0:
+                min_difference = min(min_difference, abs(remaining - sums2[i - 1]))
+        
+        return min_difference
+
+
+
+        
+        
+
+
