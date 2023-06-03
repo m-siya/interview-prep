@@ -127,7 +127,7 @@ class Solution(object):
         sums2 = sorted(sums(nums[::2]))
 
         #sort the possible sums of 2nd half
-        sums2 = sorted(sums2)
+        #sums2 = sorted(sums2)
         min_difference = 10 ** 10
         for s in sums1:
             remaining = goal - s
@@ -139,8 +139,6 @@ class Solution(object):
                 min_difference = min(min_difference, abs(remaining - sums2[i - 1]))
         
         return min_difference
-
-
 
         
         

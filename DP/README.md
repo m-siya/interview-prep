@@ -16,6 +16,29 @@
 
 4. At its core, DP problems are really graph problems. Here each dp[...][...][...] terms are nodes and edges are drawn based on recurrence relations. For your problem to have a DP solution, this graph MUST BE a DAG. This is usually what textbooks mean "optimal substructure". For me, this connection of DP to its graph representation greatly helped.
 
+### Thinking Process
+Source - https://leetcode.com/problems/target-sum/solutions/455024/dp-is-easy-5-steps-to-think-through-dp-questions/
+
+1. Category
+- 0/1 Knapsack
+- Unbounded Knapsack
+- Shortest Path (eg: Unique Paths I/II)
+- Fibonacci Sequence (eg: House Thief, Jump Game)
+- Longest Common Substring/Subsequeunce
+
+Recognize the category to frame a new question into something familiar. 
+
+2. States
+what variables to keep track of to reach our optimal result?
+Can be mapped to the paramters of the helper function f(), also maps to dimensions of the dp array.
+
+3. Decisons
+Making an optimal decision by considering all decisions. Each decision brings us closer to the base case.
+
+4. Base Case
+Relate directly to the conditions required by the answer we are seeking.
+
+
 
 ### start to (i, j) vs (i, j) to destination
     Assuming the problem is a minimum path sum in a matrix.
@@ -38,7 +61,7 @@ a technique where search space is divided into two parts of equal size. A separa
 
 use if efficient way to combine results of the 2 searches, then time taken < time for 1 large search -> 2^n -> 2^(n/2).  (2^n because at each step, we choose to take or leave an element). (2^n/2 equals root(2^n))
 
-
+use if you can solce problem for twice smaller k, like divide and conquer but without the step of recursively solving smaller subproblems
 
 Q. given an array of n numbers, how many ways to choose a subset of the numbers of sum x?
 
