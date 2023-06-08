@@ -196,5 +196,61 @@ public:
     }
 };
 
+// ### SHORTEST COMMON SUBSEQUENCE
 
+// Given two strings str1 and str2, return the shortest string that has both str1 and str2 as subsequences. 
+// If there are multiple valid strings, return any of them.
+
+// A string s is a subsequence of string t if deleting some number of characters from t (possibly 0) results in the 
+// string s.
+
+// https://leetcode.com/problems/shortest-common-supersequence/
+
+class Solution {
+public:
+    string shortestCommonSupersequence(string str1, string str2) {
+        //find lcs
+
+        int length1 = str1.length();
+        int length2 = str2.length();
+        vector<vector<string>> dp (length1 + 1, vector<string> (length2 + 1, ""));
+
+        for(int i = 0; i < length1 + 1; i++) {
+            for (int j = 0; j < length2 + 1; j++) {
+               // cout << dp[i][j];
+                if (i == 0 || j == 0) 
+                    dp[i][j] = "";
+                else if (str1[i - 1] == str2[j - 1]){
+                    //cout << str2[j - 1] << " " << str1[i - 1] << endl;
+                    dp[i][j] = dp[i - 1][j - 1] + str1[i - 1];
+                    //cout << dp[i][j] << endl;
+                }
+                else 
+                    dp[i][j] = dp[i][j - 1].size() > dp[i - 1][j].size() ? dp[i][j - 1] : dp[i - 1][j];
+
+                //cout << " " << dp[i][j] << endl;
+            }
+        }
+        
+        //after finding the lcs, iterate over the characters of the lcs and at each char, till 
+        //all characters in string 1 and string2 are not in answer, add. 
+        //then add all remaining characters in str1 and str2
+        string lcs = dp[length1][length2];
+        
+        int index1 = 0, index2 = 0;
+        string answer = "";
+
+        for (char c : lcs) {
+            while (str1[index1] != c) 
+                answer += str1[index1++];
+            while (str2[index2] != c)
+                answer += str2[index2++];
+            answer += c;
+            index1++;
+            index2++;
+        }
+        return answer + str1.substr(index1) + str2.substr(index2);
+        
+    }
+};
 
