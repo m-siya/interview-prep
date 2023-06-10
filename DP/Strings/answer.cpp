@@ -254,3 +254,49 @@ public:
     }
 };
 
+// ### EDIT DISTANCE
+// Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
+
+// You have the following three operations permitted on a word:
+
+// Insert a character
+// Delete a character
+// Replace a character
+
+// https://leetcode.com/problems/edit-distance/description/
+
+//Top down, memoization solution 
+// //2 cases - 
+// 1. word[i] == word[j] -> 0 + f(i - 1, j - 1) move _onexit
+// 2. word[i] != word2[j] -> 1. Delete char in word1 -> 1 + f(i - 1, j)
+//                           2. Insert char in word1 -> 1 + f(i, j - 1)
+//                           3. Replace char in word1 -> 1 + f(i - 1, j - 1)
+//                         Take minimum of all three options
+                    
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        //find longest common subsequence
+
+        int length1 = word1.length();
+        int length2 = word2.length();
+
+        vector<vector<int>> dp (length1, vector <int> (length2 , -1));
+        function <int(int, int)> f = [&] (int i, int j) -> int {
+            if (i < 0)
+                return j + 1;
+            if (j < 0)
+                return i + 1;
+
+            if (dp[i][j] != -1)
+                return dp[i][j]; 
+
+            if (word1[i] == word2[j])
+                return dp[i][j] = 0 + f(i - 1, j - 1);
+            else 
+                return dp[i][j] = 1 + min(f(i - 1, j - 1), min(f(i - 1, j), f(i, j - 1)));
+        };
+
+        return f(length1 - 1, length2 - 1);
+    }
+};
