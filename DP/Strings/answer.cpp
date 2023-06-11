@@ -300,3 +300,57 @@ public:
         return f(length1 - 1, length2 - 1);
     }
 };
+
+// ### WILDCARD MATCHING
+
+// Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:
+
+// '?' Matches any single character.
+// '*' Matches any sequence of characters (including the empty sequence).
+// The matching should cover the entire input string (not partial).
+
+// https://leetcode.com/problems/wildcard-matching/description/
+
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int length_s = s.size();
+        int length_p = p.size();
+
+        vector<vector<bool>> dp (length_s + 1, vector<bool> (length_p + 1, false));
+
+        for (int j = 1; j < length_p + 1 && p[j - 1] == '*'; j++) {
+            dp[0][j] = true;
+        }
+
+        dp[0][0] = true;
+
+        
+        for (int i = 1; i < length_s + 1; i++) {
+            for (int j = 1; j < length_p + 1; j++) {
+                if (i == 0 && j == 0)
+                    dp[i][j] = true;
+                
+                if (j == 0 && i > 0)
+                    dp[i][j] = false;
+
+                
+                if (s[i - 1] == p[j - 1] || p[j - 1] == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                }
+                else if (p[j - 1] == '*') {
+                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
+                }
+                else 
+                    dp[i][j] == false;
+            }
+        }
+
+        return dp[length_s][length_p];
+    }
+};
+
+
+    
+
+        
