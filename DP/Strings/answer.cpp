@@ -217,18 +217,13 @@ public:
 
         for(int i = 0; i < length1 + 1; i++) {
             for (int j = 0; j < length2 + 1; j++) {
-               // cout << dp[i][j];
                 if (i == 0 || j == 0) 
                     dp[i][j] = "";
                 else if (str1[i - 1] == str2[j - 1]){
-                    //cout << str2[j - 1] << " " << str1[i - 1] << endl;
                     dp[i][j] = dp[i - 1][j - 1] + str1[i - 1];
-                    //cout << dp[i][j] << endl;
                 }
                 else 
                     dp[i][j] = dp[i][j - 1].size() > dp[i - 1][j].size() ? dp[i][j - 1] : dp[i - 1][j];
-
-                //cout << " " << dp[i][j] << endl;
             }
         }
         
