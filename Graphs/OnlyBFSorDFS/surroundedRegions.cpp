@@ -101,5 +101,50 @@ public:
     }
 };
 
+// method -> without modifying the input grid. we iterate throught the entire grid and do dfs on very land cell. if 
+// while doing dfs we reach the boundary, return -1 to show that we must not consider this land cell cluster. else return
+// the area of the land cluster
+
+class Solution {
+public:
+    int numEnclaves(vector<vector<int>>& board) {
+        int ROWS = board.size(), COLS = board[0].size();
+        vector<vector<int>> visited (ROWS, vector<int> (COLS, 0));
+
+        int enclave_count = 0;
+
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+                if (board[row][col] == 1) {
+                    int count = dfs(board, visited, row, col);
+                    //cout << count << endl;
+                    if (count != -1) enclave_count += count;
+                }
+            }
+        } 
+
+        return enclave_count;        
+    }
+
+    int dfs(vector<vector<int>>& grid, vector<vector<int>>& visited, int row, int col) {
+        int ROWS = grid.size(), COLS = grid[0].size();
+
+        if (row < 0 || col < 0 || row == ROWS || col == COLS) return -1;
+
+        if (visited[row][col] == 1 || grid[row][col] == 0) return 0;
+
+        visited[row][col] = 1;
+
+        //grid[row][col] = 0;
+        int bottom = dfs(grid, visited, row + 1, col);
+        int right = dfs(grid, visited, row, col + 1);
+        int up = dfs(grid, visited, row - 1, col);
+        int left = dfs(grid, visited, row, col - 1);
+
+        if (bottom == -1 || right == -1 || up == -1 || left == -1) return -1;
+        else return 1 + bottom + right + up + left;
+    }
+};
+
 
  
