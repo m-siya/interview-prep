@@ -13,3 +13,13 @@ like the bucket tool in paint programs.
 [code](floodFill.py)
 
 ---------------------------
+
+## Tips
+1. DFS vs BFs
+
+|DFS |BFS|
+|---|----|
+|exhaust all possibilities and check which is best (think dp)|shortest path from source to dest|
+|count all paths b/w source and dest|if there exists a path b/w nodes|
+|||
+
