@@ -65,4 +65,34 @@ use if you can solce problem for twice smaller k, like divide and conquer but wi
 
 Q. given an array of n numbers, how many ways to choose a subset of the numbers of sum x?
 
+---------------
+### Deal with Stock Problems
+resource -> https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solutions/108870/most-consistent-ways-of-dealing-with-the-series-of-stock-problems/
 
+**summary**
+1. problem statement - given an array prices where prices[i] is the prices of a stock on the ith day, maximize profit.
+
+2. arguments for the basic recursive function f() are -> the day - i, how many transactions allowed to complete (if variable) - k, 
+
+3. actions we can take on the ith day are - rest, buy, sell. there are 2 states - canBuy and canSell. 
+
+4.  if k == 1:
+        basically we want to find the maximum difference - prices[j] - prices[i] such that j > i. 
+
+    if k == +infinity:
+        buy stock at the lowest dip before it starts rising again and sell stock at the highest point before it starts 
+        decreasing again.
+
+        this is a greedy strategy.
+
+    if k == 2:
+        variables are ith day, how many transactions left and what the current state is. so 3D dp ?
+        
+
+
+
+
+
+
+
+    
