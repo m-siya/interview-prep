@@ -43,3 +43,56 @@ class Solution:
                 low = mid + 1
         
         return ans
+
+
+# ### SPLIT ARRAY LARGEST SUM
+
+# Given an integer array nums and an integer k, split nums into k non-empty subarrays such that the largest sum of any 
+# subarray is minimized.
+
+# Return the minimized largest sum of the split.
+
+# A subarray is a contiguous part of the array.
+
+# https://leetcode.com/problems/split-array-largest-sum/description/
+
+class Solution:
+    def difference(self, nums, k, largest_sum):
+        left_sum = 0
+     #   partition = -1
+        partitions = 1
+
+        for i in range(len(nums)):
+            if left_sum + nums[i] <= largest_sum:
+                left_sum += nums[i]
+            else:
+                partitions += 1
+                left_sum = nums[i]
+        
+
+       # right_sum = sum(nums[partition + 1:])
+        #print(left_sum, right_sum)
+
+        return partitions <= k
+
+    def splitArray(self, nums: List[int], k: int) -> int:
+        #range of largest subarray sum is
+        low, high = max(nums), sum(nums)
+        ans = -1
+        while low <= high:
+            mid = low + (high - low) // 2 
+            diff = self.difference(nums, k, mid)
+            #print(low, mid, high, diff)
+        
+            if diff:
+                ans = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+
+
+        return ans
+
+
+
+
