@@ -86,6 +86,7 @@ def TopologicalSort(graph, n):
 ### Disjoint Set (Union Find)
 Resources 
 - https://takeuforward.org/data-structure/disjoint-set-union-by-rank-union-by-size-path-compression-g-46/
+- https://www.youtube.com/watch?v=aBxjDBC4M1U
 
 Problem Statement - given 2 components of an undirected graph, find if node m and node n are in the same component or not
 
@@ -99,8 +100,8 @@ ADT Functionalities :
     - Union by Rank
     - Union by Size
 
-**Union by Rank**
-1. Rank - distance between node and furthest leaf node
+#### Union by Rank
+1. Rank - distance between node and furthest leaf nodek
 
 2. Ultimate Parent - root node
 
@@ -112,6 +113,73 @@ ADT Functionalities :
 3. find rank of pu and pv
 
 4. connect ultimate parent with smaller rank to other ultimate parent with larger rank.
+
+
+Union(u, v)
+1. find ultimate parent of u and v -> pu and pv
+2. find rank of pu and pv
+3. connect smaller rank to larger rank always
+
+Find_Parent(u, v)
+1. find ultimate parent of u and v.
+2. if same, then u and v belong to the same component, else different components
+
+by applying union by rank, this takes O(logn) time.
+
+path compression - once you get ultimate parent of a node then just update its parent. then the next time, you dont have to go up the whole chain. this reduces the time complexity and tc becomes amortized O(1). 
+                - do not change rank during path compression. rank is not equivalent to height. hence, height changes during path compression but rank does not.
+
+**Why connect smaller to larger**
+height of smaller component increases and consequently, the time needed to find ultimate parent also increases (since it depends on the heights of the trees)
+
+```Python
+class DisjointSet:
+    def __init__(self, n: int):
+        self.rank = [0] * (n + 1)
+        self.parent = [i for i in range(n + 1)]
+
+    def find_ult_parent(self, node: int):
+        if (u == parent[u]):
+            return u
+        
+        return parent[u] = find_parent(parent[u])
+
+    def union_by_rank(u: int, v: int):
+        ult_parent_u = self.find_ult_parent(u)
+        ult_parent_v = self.find_ult_parent(v)
+
+        if ult_parent_u == ult_parent_v: return
+
+        if rank[ult_parent_u] < rank[ult_parent_v]:
+            #smaller attached to larger
+            parent[ult_parent_u] = ult_parent_v
+        elif rank[ult_parent_v] < rank[ult_parent_u]:
+            parent[ult_parent_v] = ult_parent_u
+        else:
+            parent[ult_parent_v] = ult_parent_u
+            rank[ult_parent_u] += 1
+```
+
+#### Union by Size
+1. keep a size array instead of rank array
+
+```Python
+def __init__(self, n: int):
+    size = [1] * (n + 1)
+
+def union_by_size(self, u: int, v: int):
+    ult_parent_u = self.find_ult_parent(u)
+    ult_parent_v = self.find_ult_parent(v)
+
+    if ult_parent_u == ult_parent_v: return
+
+    if size[ult_parent_u] < size[ult_parent_v]:
+        parent[ult_parent_u] = ult_parent_v
+        size[ult_parent_v] += size[ult_parent_u]
+    else:
+        parent[ult_parent_v] = ult_parent_u
+        size[ult_parent_u] += size[ult_parent_v]
+```
 ---------------------------
 
 ## Tips
