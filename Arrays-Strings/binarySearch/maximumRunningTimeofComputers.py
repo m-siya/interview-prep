@@ -39,3 +39,24 @@ class Solution:
             total_battery_life -= batteries.pop()
            # print(batteries)
         return total_battery_life // n
+
+
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        res = []
+
+        def backtrack(comb, curr_num):
+            if curr_num > n and len(comb) != k:
+                return 
+            if len(comb) == k:
+                res.append(comb[:])
+
+            for num in range(curr_num, n + 1):
+                comb.append(num)
+                backtrack(comb, num + 1)
+                comb.pop()
+            
+
+        
+        backtrack([], 1)
+        return res

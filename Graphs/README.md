@@ -142,7 +142,7 @@ class DisjointSet:
         if (u == parent[u]):
             return u
         
-        return parent[u] = find_parent(parent[u])
+        return parent[u] = self.find_ult_parent(parent[u])
 
     def union_by_rank(u: int, v: int):
         ult_parent_u = self.find_ult_parent(u)

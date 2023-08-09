@@ -108,7 +108,7 @@ class Solution:
         
         max_path_len = 0
         while q:
-            print(q)
+            #print(q)
 
             q_len = len(q)
 

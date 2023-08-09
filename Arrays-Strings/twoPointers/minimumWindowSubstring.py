@@ -45,6 +45,11 @@ class Solution:
 
 # optimised sol based on substr template in README.md
 
+# init end and start pointers. then keep incrementing end in an outer loop and 
+# determine if s[start:end] is a valid substr, if it is, 
+# then increment start to decrease the substr size and check if the smaller
+# current substr is also valid.
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         t_counts = Counter(t)

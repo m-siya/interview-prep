@@ -1,0 +1,33 @@
+## Resources
+https://codeforces.com/blog/entry/10124
+https://codeforces.com/blog/entry/15643
+https://codeforces.com/blog/entry/16262
+https://codeforces.com/blog/entry/16262
+
+### C++ 11
+- use range based for loops. can be used for stl containers
+
+```
+vector< int > numbers = {2, 3, 5, 7};
+for (auto& x : numbers)
+    x *= 2;
+
+for (auto x : numbers)
+    cout << x << endl;
+```
+
+- lambda functions
+```auto heights = vector< int >{ ...some values here... };
+
+auto order = vector< int >(heights.size());
+
+for (int i: range(heights.size()))
+    order[i] = i;
+
+sort(order.begin(), order.end(),
+    [&] (const int& a, const& int b) -> bool {
+        return heights[a] < heights[b];
+    }
+);
+```
+

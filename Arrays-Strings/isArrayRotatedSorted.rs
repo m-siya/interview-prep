@@ -18,7 +18,6 @@ impl Solution {
                 turning_points += 1;
             }
         }
-
         turning_points <= 1
     }
 }
