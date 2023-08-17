@@ -42,5 +42,41 @@ class Solution:
         
         return max_area
 
+# tc - O(ROWS * COLS), sc - (N + N)
+
+class Solution:
+    def maximalRectangle(self, matrix: List[List[str]]) -> int:
+        # take every row as the x axis of a histogram
+
+        ROWS, COLS = len(matrix), len(matrix[0])
+        max_area = 0
+
+        heights = [0] * COLS
+        for row in range(ROWS):
+
+            stack = []
+
+            for i in range(COLS):
+                #print(stack)
+                heights[i] = heights[i] + 1 if matrix[row][i] == '1' else 0
+
+            print(heights)
+
+                #print(row, i, height)
+            for i in range(COLS):
+                start = i
+                while stack and stack[-1][1] > heights[i]:
+                    last_index, last_height = stack.pop()
+                    max_area = max(max_area, last_height * (i - last_index))
+                    start = last_index
+                    
+                stack.append((start, heights[i]))
+            
+            while stack:
+                index, height = stack.pop()
+                max_area = max(max_area, height * (COLS - index))
+        
+        return max_area
+
 
             
