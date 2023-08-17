@@ -41,4 +41,23 @@ class Solution:
         return answer[::-1]
 
 
+# more elegant solution
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        # i.e find next bigger number in array
+
+        stack = []
+        answer = [0] * len(temperatures)
+
+        for i in range(len(temperatures) - 1, -1, -1):
+            #print(i, stack, answer)
+            while stack and temperatures[stack[-1]] <= temperatures[i]:
+                stack.pop()
+            
+            answer[i] = stack[-1] - i if stack else 0
+            stack.append(i)
+        return answer
+
+
         
+
