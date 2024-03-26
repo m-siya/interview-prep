@@ -45,3 +45,33 @@ class Solution:
             
         return len(nums) if nums[0] != len(nums) else len(nums) + 1
 
+# TC: O(n)
+# SC: O(1)
+    
+# for a nums with length n, the answer is in range [1: n + 1]
+# so we can eliminate all nums[i] which do not fall into this range
+# then iterate through the array again and add (n + 1) to each nums[num - 1] if 
+#    you see num where num is nums[i]
+# check at the end if any nums[i] <= n which means n+ 1 wasnt added to it
+# which in turn means that we did not see i + 1 in the array
+# if there is no such i then n + 1 must be the answer.
+
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        n = len(nums)
+        #let index i correspond to num i + 1
+        for i in range(n):
+            if nums[i] <=0 or nums[i] > n: 
+                nums[i] = 0
+        
+        for i in range(n):
+            if 0 < nums[i] % (n + 1) <= n:
+                num = nums[i] % (n + 1) - 1
+                nums[num] += n + 1
+
+        for i in range(n):
+            if nums[i] <= n:
+                return i + 1
+        
+        return n + 1
+    
