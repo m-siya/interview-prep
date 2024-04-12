@@ -10,6 +10,7 @@ Keep a track of what i'm learning in DSA for interviews
 - [ ] https://leetcode.com/problems/ipo/
 - [ ] https://leetcode.com/problems/total-cost-to-hire-k-workers/description/
 - [ ] https://leetcode.com/problems/largest-number/description/
+- [ ] Learn line sweep algorithms -> https://leetcode.com/discuss/study-guide/2166045/line-sweep-algorithms
 
 ### Heap
 - [ ] https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
