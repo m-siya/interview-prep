@@ -201,3 +201,27 @@ def union_by_size(self, u: int, v: int):
     - we can split the nodes of the graph  into 2 subsets so that there is all the edges go from 1 subset to the other subset.
 
     - The graph should be bi-colourable.
+
+### Dijkstra
+- for a weighted, undirected, connected graph with no negative weight cycle
+- find shortest distancd of all vertices from source vertex S.
+
+**Code**
+```Python
+import heapq as hq
+#neighbours = {node: [(neighbour, cost)]}
+def dijkstra(neighbours):
+    #source is 0 node
+    pq = [(0, 0)] #node, dist
+    min_distances = [float('inf')] * len(neighbours)
+
+    while pq:
+        curr, curr_dist = hq.heappop(pq)
+
+        for neighbour, dist in neighbours[curr]:
+            if (curr_dist + dist < min_distances[neighbour]):
+                min_distances[neighbour] = curr_dist + dist
+                hq.heappush(pq, (neighbour, curr_dist + dist))
+    
+    return min_distances
+```
