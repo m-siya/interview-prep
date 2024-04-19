@@ -17,6 +17,14 @@ resource -> https://leetcode.com/discuss/study-guide/3726061/mastering-binary-se
 
 --------------------------------
 
+### Sweep Line Algorithm
+- for events in sorted order with a start and end
+- at start, increment by 1; at end, decrement by 1
+
+
+
+------------------
+
 ### Solving substring questions
 
 - problem statement - find a substring of a given string that satisfies some given criteria
