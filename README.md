@@ -34,3 +34,10 @@ Keep a track of what i'm learning in DSA for interviews
 - [ ] 2302. Count Subarrays With Score Less Than K
 - [ ] https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
 
+
+
+- https://leetcode.com/discuss/interview-question/5366542/all-leetcode-articles-on-coding-patterns-summarized-in-one-page
+
+
+## useful resources !!
+- [All about XOR: great resource on workings on XOR](https://accu.org/journals/overload/20/109/lewin_1915/)

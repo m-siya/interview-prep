@@ -30,7 +30,7 @@ class Trie:
         curr = self.root
 
         for char in word:
-            if c not in curr.children:
+            if char not in curr.children:
                 curr.children[char] = TrieNode()
             
             curr = children[char]

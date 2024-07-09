@@ -58,6 +58,11 @@ def find_substring(s: str) -> int:
 ```
 --------------------------
 
+## prefix sum
+There are a number of other prefix-sum questions, and the trick is to generate an equation (based on the problem statement), and then rearrange the equation so that F[j] is on one side, and F[i] is on the other. Whatever is on the F[j] side are the "keys" that you will store in a hash-map, and whatever is on the F[i] side is what you will calculate at every step of the array traversal.
+
+
+
 ### Things to Remember
 
 1. No. of subarrays (seq of contiguous elements in an array) of an array of len N = N(N + 1) / 2
