@@ -40,3 +40,35 @@ class Solution:
 
         
         return f(0, len(cuts) - 1)
+    
+
+class Solution:
+    def minCost(self, n: int, cuts: List[int]) -> int:
+        cuts.append(n)
+        cuts.insert(0, 0)
+        cuts.sort()
+
+        dp = [[0 for _ in range(len(cuts) + 1)] for _ in range(len(cuts) + 1)]
+
+        # move from smaller intervals to larger intervals
+
+        for length in range(2, len(cuts)):
+
+            for start in range(0, len(cuts) - length):
+                end = start + length
+                if end - start <= 1: 
+                    dp[start][end] = 0
+                #print(start, end)
+            
+                else:
+                    min_cost = 1e9
+                    for i in range(start + 1, end):
+                        cost = dp[start][i] + dp[i][end] + (cuts[end] - cuts[start])
+                        min_cost = min(min_cost, cost)
+                    dp[start][end] = min_cost
+                    #print(start, end, cuts[end] - cuts[start])
+
+        #print(dp)
+        
+
+        return dp[0][len(cuts) - 1]
