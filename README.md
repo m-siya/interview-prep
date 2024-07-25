@@ -12,6 +12,12 @@ Keep a track of what i'm learning in DSA for interviews
 - [ ] https://leetcode.com/problems/largest-number/description/
 - [ ] Learn line sweep algorithms -> https://leetcode.com/discuss/study-guide/2166045/line-sweep-algorithms
 
+- https://leetcode.com/problems/the-skyline-problem/description/
+- https://leetcode.com/problems/russian-doll-envelopes/description/
+- https://leetcode.com/problems/delete-and-earn/description/
+- https://leetcode.com/problems/maximum-compatibility-score-sum/description/
+
+
 ### Heap
 - [ ] https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
 
@@ -19,7 +25,7 @@ Keep a track of what i'm learning in DSA for interviews
 ### Lists
 - https://github.com/wisdompeak/LeetCode
 - https://leetcode.com/discuss/study-guide/1612475/All-leetcode-discuss-lists-and-my-lists-so-far-topic-wisedifficulty-wise/1172200
-- 
+- https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
 
 ### Arrays
 - [ ] 696. Count Binary Substrings
