@@ -205,6 +205,9 @@ def union_by_size(self, u: int, v: int):
 ### Dijkstra
 - for a weighted, undirected, connected graph with no negative weight cycle
 - find shortest distancd of all vertices from source vertex S.
+- will fall in infinite loop if negative cycle
+- can apply dijkstra to every node to achieve same functionality as floyd warshall but fails for negative cycles
+
 
 **Code**
 ```Python
@@ -225,3 +228,31 @@ def dijkstra(neighbours):
     
     return min_distances
 ```
+
+### Floyd Warshall Algorithm
+
+- multi source shortest path algorithm
+
+- thought process - for a source A and dest B, go via every node and get shortest path - min(d[A][k] + d[k][B]) for all k in nodes
+
+- also helps to detect negative cycles -> if cost of any node d[i][i] < 0, then it means there is a negative cycle
+
+- TC - O(n^3), SC - O(n^2) because we use the 2d cost matrix
+
+```python
+def floyd_warshall(matrix: List[List[int]]) -> int:
+    n = len(matrix)
+
+    # assuming weight matrix with edges cost filled out and wherever no edge, then 1e9 and matrix[i][i] == 0
+
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                matrix[i][j] = min(matrix[i][j], matrix[i][k] + matrix[k][j])
+    
+    # check negative cycle
+    for i in range(n):
+        if matrix[i][i] < 0:
+            print("negative cycle found")
+```
+

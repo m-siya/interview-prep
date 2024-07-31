@@ -26,6 +26,7 @@ Keep a track of what i'm learning in DSA for interviews
 - https://github.com/wisdompeak/LeetCode
 - https://leetcode.com/discuss/study-guide/1612475/All-leetcode-discuss-lists-and-my-lists-so-far-topic-wisedifficulty-wise/1172200
 - https://leetcode.com/discuss/general-discussion/1050391/Must-do-Dynamic-programming-Problems-Category-wise
+- https://hn026.github.io/posts/200DPPROB/#bit-dp
 
 ### Arrays
 - [ ] 696. Count Binary Substrings

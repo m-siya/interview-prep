@@ -58,6 +58,25 @@ class Solution:
             stack.append(i)
         return answer
 
+# going from left to right
 
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        ans = [0] * len(temperatures)
+        for i in range(len(temperatures)):
+
+            curr_temp = temperatures[i]
+
+            while stack and curr_temp > temperatures[stack[-1]]:
+                prev_temp_idx = stack.pop()
+                ans[prev_temp_idx] = i - prev_temp_idx
+            
+            stack.append(i)
+        
+        return ans
+
+
+        
         
 
