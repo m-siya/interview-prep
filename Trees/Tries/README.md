@@ -33,7 +33,7 @@ class Trie:
             if char not in curr.children:
                 curr.children[char] = TrieNode()
             
-            curr = children[char]
+            curr = curr.children[char]
         
         curr.end_of_word = True
     
